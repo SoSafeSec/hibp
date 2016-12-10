@@ -22,7 +22,11 @@
       <h2>
 <a id="installation" class="anchor" href="#installation" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Installation</h2>
 
-<p>Local via npm:</p>
+<p>Locally via yarn:</p>
+
+<div class="highlight highlight-source-shell"><pre>yarn add hibp</pre></div>
+
+<p>Or, npm:</p>
 
 <div class="highlight highlight-source-shell"><pre>npm install --save hibp</pre></div>
 
@@ -83,22 +87,6 @@ hibp
 additional examples.</p>
 
 <h4>
-<a id="using-in-nodejs--012" class="anchor" href="#using-in-nodejs--012" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Using in Node.js &lt; 0.12</h4>
-
-<p>This module requires a Promise implementation to exist in the global namespace
-prior to being loaded. Therefore, to facilitate use on versions of Node.js
-before 0.12, you are responsible for providing a polyfill. I recommend
-<a href="https://github.com/stefanpenner/es6-promise">es6-promise</a>.</p>
-
-<h5>
-<a id="example-1" class="anchor" href="#example-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example:</h5>
-
-<div class="highlight highlight-source-js"><pre><span class="pl-c">// This must be first!</span>
-<span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>es6-promise/auto<span class="pl-pds">'</span></span>);
-
-<span class="pl-k">var</span> hibp <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>hibp<span class="pl-pds">'</span></span>);</pre></div>
-
-<h4>
 <a id="using-in-the-browser" class="anchor" href="#using-in-the-browser" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Using in the browser</h4>
 
 <p>There is a Universal Module Definition (UMD) build provided in the package
@@ -136,11 +124,10 @@ you may explicitly include or require the UMD version like so:</p>
 <span class="pl-c">// ES5</span>
 <span class="pl-k">var</span> hibp <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>hibp/dist/hibp.min.js<span class="pl-pds">'</span></span>);</pre></div>
 
-<p><strong>N.B.</strong> As stated above, this module requires a Promise implementation to
-exist in the global namespace prior to being loaded. Therefore, to facilitate
-usage on <a href="http://caniuse.com/#search=promise">browsers without native Promise support</a>, you are
-responsible for providing a polyfill. Again, I recommend
-<a href="https://github.com/stefanpenner/es6-promise">es6-promise</a>.</p>
+<p><strong>N.B.</strong> This module requires a Promise implementation to exist in the global
+namespace prior to being loaded. Therefore, to facilitate usage on
+<a href="http://caniuse.com/#search=promise">browsers without native Promise support</a>, you are responsible
+for providing a polyfill. I recommend <a href="https://github.com/stefanpenner/es6-promise">es6-promise</a>.</p>
 
 <h2>
 <a id="projects-using-hibp" class="anchor" href="#projects-using-hibp" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Projects Using hibp</h2>
@@ -149,6 +136,9 @@ responsible for providing a polyfill. Again, I recommend
 <li>
 <a href="https://github.com/wKovacs64/pwned">pwned</a> - a command-line tool for querying the
 '<a href="https://haveibeenpwned.com">Have I been pwned?</a>' service</li>
+<li>
+<a href="https://stdlib.com/services/wKovacs64/hibp">hibp-stdlib</a> - a microservice on <a href="https://stdlib.com">stdlib</a>
+</li>
 </ul>
 
 <p>Send me a <a href="https://github.com/wKovacs64/hibp/pulls">PR</a> or an email and I'll add yours to the list.</p>
