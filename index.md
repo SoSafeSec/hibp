@@ -25,13 +25,18 @@ Browser via CDN (see [below](#using-in-the-browser) for more information):
 * Get a single breached site
 * Get all data classes
 * Get all pastes for an account
+* Search for an account in both breaches and pastes at the same time
 * All queries return a Promise
 * Available server-side (Node.js) and client-side (browser)
 
 ## Usage
 
 ```javascript
+// import using ECMAScript module syntax
 import hibp from 'hibp';
+
+// or require using CommonJS module syntax
+var hibp = require('hibp');
 ```
 
 Now the following functions are available in the `hibp` object:
@@ -41,6 +46,7 @@ Now the following functions are available in the `hibp` object:
 * [.breach(breachName)](https://github.com/wKovacs64/hibp/tree/master/API.md#hibp.breach)
 * [.dataClasses()](https://github.com/wKovacs64/hibp/tree/master/API.md#hibp.dataClasses)
 * [.pasteAccount(email)](https://github.com/wKovacs64/hibp/tree/master/API.md#hibp.pasteAccount)
+* [.search(account, [breachOptions])](https://github.com/wKovacs64/hibp/tree/master/API.md#hibp.search)
 
 ##### Example:
 
@@ -48,9 +54,9 @@ Now the following functions are available in the `hibp` object:
 import hibp from 'hibp';
 
 hibp
-  .breachedAccount('someAccountOrEmail')
+  .search('someAccountOrEmail')
   .then((data) => {
-    if (data) {
+    if (data.breaches || data.pastes) {
       // Bummer...
       console.log(data);
     } else {
@@ -90,22 +96,14 @@ like [webpack][webpack]. If your build process honors the
 `browser` field in `package.json`, you can import or require it normally:
 
 ```javascript
-// ES2015
 import hibp from 'hibp';
-
-// ES5
-var hibp = require('hibp');
 ```
 
-If your build process does not respect the `browser` field of `package.json`,
-you may explicitly include or require the UMD version like so:
+If your build process does **not** respect the `browser` field of
+`package.json`, you may explicitly include or require the UMD version like so:
 
 ```javascript
-// ES2015
 import hibp from 'hibp/dist/hibp.min.js';
-
-// ES5
-var hibp = require('hibp/dist/hibp.min.js');
 ```
 
 **N.B.** This module requires a Promise implementation to exist in the global
@@ -127,7 +125,7 @@ Send me a [PR][pulls] or an email and I'll add yours to the list.
 
 ## License
 
-This module is distributed under the [MIT License](https://github.com/wKovacs64/hibp/tree/master/LICENSE.txt).
+This module is distributed under the [MIT License][license].
 
 [npm-image]: https://img.shields.io/npm/v/hibp.svg?style=flat-square
 [npm-url]: https://www.npmjs.com/package/hibp
@@ -148,3 +146,4 @@ This module is distributed under the [MIT License](https://github.com/wKovacs64/
 [pulls]: https://github.com/wKovacs64/hibp/pulls
 [hibp-stdlib]: https://stdlib.com/services/wKovacs64/hibp
 [stdlib]: https://stdlib.com
+[license]: https://github.com/wKovacs64/hibp/tree/master/LICENSE.txt
