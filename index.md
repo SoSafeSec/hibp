@@ -1,3 +1,7 @@
+---
+title: hibp
+---
+
 ## Installation
 
 Locally via yarn:
