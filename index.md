@@ -19,14 +19,14 @@ npm install --save hibp
 Browser via CDN (see [below](#using-in-the-browser) for more information):
 
 ```html
-<script src="https://unpkg.com/hibp"></script>
+<script src="https://unpkg.com/hibp@4.4.0"></script>
 ```
 
 ## Features
 
+* Get a single breach event
 * Get all breaches for an account
-* Get all breached sites in the system
-* Get a single breached site
+* Get all breach events in the system
 * Get all data classes
 * Get all pastes for an account
 * Search for an account in both breaches and pastes at the same time
@@ -36,29 +36,41 @@ Browser via CDN (see [below](#using-in-the-browser) for more information):
 ## Usage
 
 ```javascript
-// import using ECMAScript module syntax
+/* ECMAScript module syntax */
+
+// import individual modules as needed
+import { dataClasses, search } from 'hibp';
+// or, import all modules into a local namespace
+import * as hibp from 'hibp';
+// or, import the default export (warning: prevents tree-shaking)
 import hibp from 'hibp';
 
-// or require using CommonJS module syntax
-var hibp = require('hibp');
+/* CommonJS module syntax */
+
+// require individual functions as needed
+const { search } = require('hibp');
+// or, require all functions into a local namespace
+const hibp = require('hibp');
 ```
 
-Now the following functions are available in the `hibp` object:
+The following modules are available:
 
-* [.breachedAccount(account, [options])](https://github.com/wKovacs64/hibp/tree/master/API.md#hibp.breachedAccount)
-* [.breaches([options])](https://github.com/wKovacs64/hibp/tree/master/API.md#hibp.breaches)
-* [.breach(breachName)](https://github.com/wKovacs64/hibp/tree/master/API.md#hibp.breach)
-* [.dataClasses()](https://github.com/wKovacs64/hibp/tree/master/API.md#hibp.dataClasses)
-* [.pasteAccount(email)](https://github.com/wKovacs64/hibp/tree/master/API.md#hibp.pasteAccount)
-* [.search(account, [breachOptions])](https://github.com/wKovacs64/hibp/tree/master/API.md#hibp.search)
+* [breach](https://github.com/wKovacs64/hibp/tree/master/API.md#breach)
+* [breachedAccount](https://github.com/wKovacs64/hibp/tree/master/API.md#breachedaccount)
+* [breaches](https://github.com/wKovacs64/hibp/tree/master/API.md#breaches)
+* [dataClasses](https://github.com/wKovacs64/hibp/tree/master/API.md#dataclasses)
+* [pasteAccount](https://github.com/wKovacs64/hibp/tree/master/API.md#pasteaccount)
+* [search](https://github.com/wKovacs64/hibp/tree/master/API.md#search)
 
-##### Example:
+Please see the [API reference](https://github.com/wKovacs64/hibp/tree/master/API.md) for more detailed usage information and
+examples.
+
+#### Quick-Start Example
 
 ```javascript
-import hibp from 'hibp';
+import { search } from 'hibp';
 
-hibp
-  .search('someAccountOrEmail')
+search('someAccountOrEmail')
   .then((data) => {
     if (data.breaches || data.pastes) {
       // Bummer...
@@ -74,44 +86,43 @@ hibp
   });
 ```
 
-Please see the [API reference](https://github.com/wKovacs64/hibp/tree/master/API.md) for more detailed usage information and
-additional examples.
-
 #### Using in the browser
 
 There is a Universal Module Definition (UMD) build provided in the package
 `dist` directory for usage in the browser. When using this build, an `hibp`
-object will be added to the browser's `window` object. Development and
-production (minified) UMD builds are both provided for download:
+object will be added to the browser's `window` object.
+
+The recommended way to include the UMD build (when using a `<script>` tag) is to
+use the [unpkg][unpkg] CDN, specifying the exact version you want. If you don't
+specify a version, the `latest` tag will be used, which could be dangerous
+if/when there are breaking changes made to the API. See [unpkg][unpkg] for
+details and advanced version specification, but generally you will want to do
+the following (replacing `x.y.z` with the version you want):
+
+```html
+<script src="https://unpkg.com/hibp@x.y.z"></script>
+```
+
+Development and production (minified) UMD builds are also provided for manual
+download if desired:
 
 * [https://unpkg.com/hibp/dist/hibp.js][cdn-dev]
 * [https://unpkg.com/hibp/dist/hibp.min.js][cdn-prod]
 
-You can include one of these builds directly via CDN (this example will
-reference the `latest` tag version of the production build by default, but you
-can specify a particular version if desired - see [unpkg][unpkg] for details):
-
-```html
-<script src="https://unpkg.com/hibp"></script>
-```
-
 Alternatively, you may bundle it in with client-side code with a module bundler
-like [webpack][webpack]. If your build process honors the
-`browser` field in `package.json`, you can import or require it normally:
-
-```javascript
-import hibp from 'hibp';
-```
+like [webpack][webpack]. If your build process honors the `browser` field in
+`package.json`, you can import or require it normally as described
+[above](#usage).
 
 If your build process does **not** respect the `browser` field of
 `package.json`, you may explicitly include or require the UMD version like so:
 
 ```javascript
-import hibp from 'hibp/dist/hibp.min.js';
+import { breachedAccount } from 'hibp/dist/hibp.min.js';
 ```
 
 **N.B.** This module requires a Promise implementation to exist in the global
-namespace prior to being loaded. Therefore, to facilitate usage on
+namespace prior to being loaded. Therefore, to facilitate usage in
 [browsers without native Promise support][caniuse-promise], you are responsible
 for providing a polyfill. I recommend [es6-promise][es6-promise].
 
@@ -123,7 +134,7 @@ for providing a polyfill. I recommend [es6-promise][es6-promise].
 
 * [pwned][pwned] - a command-line tool for querying the
   '[Have I been pwned?][haveibeenpwned]' service
-* [hibp-stdlib][hibp-stdlib] - a microservice on [stdlib][stdlib]
+* [hibp-stdlib][hibp-stdlib] - a microservice on [StdLib][stdlib]
 
 Send me a [PR][pulls] or an email and I'll add yours to the list.
 
@@ -139,12 +150,12 @@ This module is distributed under the [MIT License][license].
 [coveralls-url]: https://coveralls.io/github/wKovacs64/hibp
 [troy]: http://www.troyhunt.com
 [haveibeenpwned]: https://haveibeenpwned.com
-[es6-promise]: https://github.com/stefanpenner/es6-promise
 [unpkg]: https://unpkg.com
-[webpack]: https://webpack.github.io
 [cdn-dev]: https://unpkg.com/hibp/dist/hibp.js
 [cdn-prod]: https://unpkg.com/hibp/dist/hibp.min.js
+[webpack]: https://webpack.github.io
 [caniuse-promise]: http://caniuse.com/#search=promise
+[es6-promise]: https://github.com/stefanpenner/es6-promise
 [runkit]: https://runkit.com/npm/hibp
 [pwned]: https://github.com/wKovacs64/pwned
 [pulls]: https://github.com/wKovacs64/hibp/pulls
