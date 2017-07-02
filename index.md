@@ -19,7 +19,7 @@ npm install --save hibp
 Browser via CDN (see [below](#using-in-the-browser) for more information):
 
 ```html
-<script src="https://unpkg.com/hibp@4.4.0"></script>
+<script src="https://unpkg.com/hibp@5.0.0"></script>
 ```
 
 ## Features
@@ -35,21 +35,21 @@ Browser via CDN (see [below](#using-in-the-browser) for more information):
 
 ## Usage
 
-```javascript
-/* ECMAScript module syntax */
+##### ECMAScript module syntax:
 
+```javascript
 // import individual modules as needed
 import { dataClasses, search } from 'hibp';
 // or, import all modules into a local namespace
 import * as hibp from 'hibp';
-// or, import the default export (warning: prevents tree-shaking)
-import hibp from 'hibp';
+```
 
-/* CommonJS module syntax */
+##### CommonJS module syntax:
 
-// require individual functions as needed
-const { search } = require('hibp');
-// or, require all functions into a local namespace
+```javascript
+// require individual modules as needed
+const { dataClasses, search } = require('hibp');
+// or, require all modules into a local namespace
 const hibp = require('hibp');
 ```
 
@@ -109,17 +109,11 @@ download if desired:
 * [https://unpkg.com/hibp/dist/hibp.js][cdn-dev]
 * [https://unpkg.com/hibp/dist/hibp.min.js][cdn-prod]
 
-Alternatively, you may bundle it in with client-side code with a module bundler
-like [webpack][webpack]. If your build process honors the `browser` field in
-`package.json`, you can import or require it normally as described
-[above](#usage).
-
-If your build process does **not** respect the `browser` field of
-`package.json`, you may explicitly include or require the UMD version like so:
-
-```javascript
-import { breachedAccount } from 'hibp/dist/hibp.min.js';
-```
+Alternatively, you may bundle it in with client-side code using a module bundler
+like [webpack][webpack]. If your build process honors the `module` field in
+`package.json`, you can import the ECMAScript module as described
+[above](#usage). Otherwise, the `main` field resolves to the CommonJS module
+version.
 
 **N.B.** This module requires a Promise implementation to exist in the global
 namespace prior to being loaded. Therefore, to facilitate usage in
