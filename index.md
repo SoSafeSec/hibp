@@ -2,6 +2,16 @@
 title: hibp
 ---
 
+<a href="https://wkovacs64.github.io/hibp">
+  <img
+    alt="logo"
+    title="logo"
+    src="https://wkovacs64.github.io/hibp/logo.png"
+    align="right"
+    width="85"
+  />
+</a>
+
 ## Installation
 
 Locally via yarn:
