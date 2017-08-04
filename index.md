@@ -29,7 +29,7 @@ npm install --save hibp
 Browser via CDN (see [below](#using-in-the-browser) for more information):
 
 ```html
-<script src="https://unpkg.com/hibp@5.1.0"></script>
+<script src="https://unpkg.com/hibp@5.2.0"></script>
 ```
 
 ## Features
@@ -39,6 +39,7 @@ Browser via CDN (see [below](#using-in-the-browser) for more information):
 * Get all breach events in the system
 * Get all data classes
 * Get all pastes for an account
+* Check a password to see if it has been exposed in a data breach
 * Search for an account in both breaches and pastes at the same time
 * All queries return a Promise
 * Available server-side (Node.js) and client-side (browser)
@@ -70,6 +71,7 @@ The following modules are available:
 * [breaches](https://github.com/wKovacs64/hibp/tree/master/API.md#breaches)
 * [dataClasses](https://github.com/wKovacs64/hibp/tree/master/API.md#dataclasses)
 * [pasteAccount](https://github.com/wKovacs64/hibp/tree/master/API.md#pasteaccount)
+* [pwnedPassword](https://github.com/wKovacs64/hibp/tree/master/API.md#pwnedpassword)
 * [search](https://github.com/wKovacs64/hibp/tree/master/API.md#search)
 
 Please see the [API reference](https://github.com/wKovacs64/hibp/tree/master/API.md) for more detailed usage information and
