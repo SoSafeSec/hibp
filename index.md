@@ -29,7 +29,7 @@ npm install --save hibp
 Browser via CDN (see [below](#using-in-the-browser) for more information):
 
 ```html
-<script src="https://unpkg.com/hibp@5.2.0"></script>
+<script src="https://unpkg.com/hibp@5.2.1"></script>
 ```
 
 ## Features
@@ -158,8 +158,8 @@ This module is distributed under the [MIT License][license].
 [npm-url]: https://www.npmjs.com/package/hibp
 [travis-image]: https://img.shields.io/travis/wKovacs64/hibp.svg?style=flat-square
 [travis-url]: https://travis-ci.org/wKovacs64/hibp
-[coveralls-image]: https://img.shields.io/coveralls/wKovacs64/hibp.svg?style=flat-square
-[coveralls-url]: https://coveralls.io/github/wKovacs64/hibp
+[coverage-image]: https://img.shields.io/codecov/c/github/wKovacs64/hibp/master.svg?style=flat-square
+[coverage-url]: https://codecov.io/github/wKovacs64/hibp?branch=master
 [troy]: http://www.troyhunt.com
 [haveibeenpwned]: https://haveibeenpwned.com
 [unpkg]: https://unpkg.com
