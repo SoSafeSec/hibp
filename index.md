@@ -74,8 +74,9 @@ The following modules are available:
 * [pwnedPassword](https://github.com/wKovacs64/hibp/tree/master/API.md#pwnedpassword)
 * [search](https://github.com/wKovacs64/hibp/tree/master/API.md#search)
 
-Please see the [API reference](https://github.com/wKovacs64/hibp/tree/master/API.md) for more detailed usage information and
-examples.
+Please see the
+[API reference](https://github.com/wKovacs64/hibp/tree/master/API.md) for more
+detailed usage information and examples.
 
 #### Quick-Start Example
 
@@ -83,7 +84,7 @@ examples.
 import { search } from 'hibp';
 
 search('someAccountOrEmail')
-  .then((data) => {
+  .then(data => {
     if (data.breaches || data.pastes) {
       // Bummer...
       console.log(data);
@@ -92,7 +93,7 @@ search('someAccountOrEmail')
       console.log('Good news — no pwnage found!');
     }
   })
-  .catch((err) => {
+  .catch(err => {
     // Something went wrong.
     console.log(err.message);
   });
@@ -128,9 +129,9 @@ like [webpack][webpack]. If your build process honors the `module` field in
 version.
 
 **N.B.** This module requires a Promise implementation to exist in the global
-namespace prior to being loaded. Therefore, to facilitate usage in
-[browsers without native Promise support][caniuse-promise], you are responsible
-for providing a polyfill. I recommend [es6-promise][es6-promise].
+namespace prior to being loaded. Therefore, to facilitate usage in [browsers
+without native Promise support][caniuse-promise], you are responsible for
+providing a polyfill. I recommend [es6-promise][es6-promise].
 
 ## Try It Out
 
@@ -138,8 +139,8 @@ for providing a polyfill. I recommend [es6-promise][es6-promise].
 
 ## Projects Using hibp
 
-* [pwned][pwned] - a command-line tool for querying the
-  '[Have I been pwned?][haveibeenpwned]' service
+* [pwned][pwned] - a command-line tool for querying the '[Have I been
+  pwned?][haveibeenpwned]' service
 * [hibp-stdlib][hibp-stdlib] - a microservice on [StdLib][stdlib]
 
 Send me a [PR][pulls] or an email and I'll add yours to the list.
