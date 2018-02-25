@@ -29,7 +29,7 @@ npm install --save hibp
 Browser via CDN (see [below](#using-in-the-browser) for more information):
 
 ```html
-<script src="https://unpkg.com/hibp@5.2.5"></script>
+<script src="https://unpkg.com/hibp@5.3.0"></script>
 ```
 
 ## Features
@@ -40,6 +40,8 @@ Browser via CDN (see [below](#using-in-the-browser) for more information):
 * Get all data classes
 * Get all pastes for an account
 * Check a password to see if it has been exposed in a data breach
+* Check a password by SHA-1 prefix to see if it has been exposed in a data
+  breach (without exposing the password)
 * Search for an account in both breaches and pastes at the same time
 * All queries return a Promise
 * Available server-side (Node.js) and client-side (browser)
@@ -72,6 +74,7 @@ The following modules are available:
 * [dataClasses](https://github.com/wKovacs64/hibp/tree/master/API.md#dataclasses)
 * [pasteAccount](https://github.com/wKovacs64/hibp/tree/master/API.md#pasteaccount)
 * [pwnedPassword](https://github.com/wKovacs64/hibp/tree/master/API.md#pwnedpassword)
+* [pwnedPasswordRange](https://github.com/wKovacs64/hibp/tree/master/API.md#pwnedpasswordrange)
 * [search](https://github.com/wKovacs64/hibp/tree/master/API.md#search)
 
 Please see the
@@ -160,6 +163,6 @@ This module is distributed under the [MIT License][license].
 [runkit]: https://runkit.com/npm/hibp
 [pwned]: https://github.com/wKovacs64/pwned
 [pulls]: https://github.com/wKovacs64/hibp/pulls
-[hibp-stdlib]: https://stdlib.com/services/wKovacs64/hibp
+[hibp-stdlib]: https://stdlib.com/@wKovacs64/lib/hibp
 [stdlib]: https://stdlib.com
 [license]: https://github.com/wKovacs64/hibp/tree/master/LICENSE.txt
