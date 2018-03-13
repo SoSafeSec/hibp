@@ -29,7 +29,7 @@ npm install --save hibp
 Browser via CDN (see [below](#using-in-the-browser) for more information):
 
 ```html
-<script src="https://unpkg.com/hibp@6.0.0"></script>
+<script src="https://unpkg.com/hibp@7.0.0"></script>
 ```
 
 ## Features
@@ -39,9 +39,9 @@ Browser via CDN (see [below](#using-in-the-browser) for more information):
 * Get all breach events in the system
 * Get all data classes
 * Get all pastes for an account
-* Check a password to see if it has been exposed in a data breach
-* Check a password by SHA-1 prefix to see if it has been exposed in a data
-  breach (without exposing the password)
+* [Securely][search-by-range] check a password to see if it has been exposed in
+  a data breach
+* Check a SHA-1 prefix to see if it has been exposed in a data breach
 * Search for an account in both breaches and pastes at the same time
 * All queries return a Promise
 * Available server-side (Node.js) and client-side (browser)
@@ -154,6 +154,7 @@ This module is distributed under the [MIT License][license].
 
 [troy]: http://www.troyhunt.com
 [haveibeenpwned]: https://haveibeenpwned.com
+[search-by-range]: https://haveibeenpwned.com/API/v2#SearchingPwnedPasswordsByRange
 [unpkg]: https://unpkg.com
 [cdn-dev]: https://unpkg.com/hibp/dist/hibp.js
 [cdn-prod]: https://unpkg.com/hibp/dist/hibp.min.js
