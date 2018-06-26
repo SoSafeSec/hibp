@@ -34,17 +34,17 @@ Browser via CDN (see [below](#using-in-the-browser) for more information):
 
 ## Features
 
-* Get a single breach event
-* Get all breaches for an account
-* Get all breach events in the system
-* Get all data classes
-* Get all pastes for an account
-* [Securely][search-by-range] check a password to see if it has been exposed in
+- Get a single breach event
+- Get all breaches for an account
+- Get all breach events in the system
+- Get all data classes
+- Get all pastes for an account
+- [Securely][search-by-range] check a password to see if it has been exposed in
   a data breach
-* Check a SHA-1 prefix to see if it has been exposed in a data breach
-* Search for an account in both breaches and pastes at the same time
-* All queries return a Promise
-* Available server-side (Node.js) and client-side (browser)
+- Check a SHA-1 prefix to see if it has been exposed in a data breach
+- Search for an account in both breaches and pastes at the same time
+- All queries return a Promise
+- Available server-side (Node.js) and client-side (browser)
 
 ## Usage
 
@@ -68,14 +68,14 @@ const hibp = require('hibp');
 
 The following modules are available:
 
-* [breach](https://github.com/wKovacs64/hibp/tree/master/API.md#breach)
-* [breachedAccount](https://github.com/wKovacs64/hibp/tree/master/API.md#breachedaccount)
-* [breaches](https://github.com/wKovacs64/hibp/tree/master/API.md#breaches)
-* [dataClasses](https://github.com/wKovacs64/hibp/tree/master/API.md#dataclasses)
-* [pasteAccount](https://github.com/wKovacs64/hibp/tree/master/API.md#pasteaccount)
-* [pwnedPassword](https://github.com/wKovacs64/hibp/tree/master/API.md#pwnedpassword)
-* [pwnedPasswordRange](https://github.com/wKovacs64/hibp/tree/master/API.md#pwnedpasswordrange)
-* [search](https://github.com/wKovacs64/hibp/tree/master/API.md#search)
+- [breach](https://github.com/wKovacs64/hibp/tree/master/API.md#breach)
+- [breachedAccount](https://github.com/wKovacs64/hibp/tree/master/API.md#breachedaccount)
+- [breaches](https://github.com/wKovacs64/hibp/tree/master/API.md#breaches)
+- [dataClasses](https://github.com/wKovacs64/hibp/tree/master/API.md#dataclasses)
+- [pasteAccount](https://github.com/wKovacs64/hibp/tree/master/API.md#pasteaccount)
+- [pwnedPassword](https://github.com/wKovacs64/hibp/tree/master/API.md#pwnedpassword)
+- [pwnedPasswordRange](https://github.com/wKovacs64/hibp/tree/master/API.md#pwnedpasswordrange)
+- [search](https://github.com/wKovacs64/hibp/tree/master/API.md#search)
 
 Please see the
 [API reference](https://github.com/wKovacs64/hibp/tree/master/API.md) for more
@@ -122,8 +122,8 @@ the following (replacing `x.y.z` with the version you want):
 Development and production (minified) UMD builds are also provided for manual
 download if desired:
 
-* [https://unpkg.com/hibp/dist/hibp.js][cdn-dev]
-* [https://unpkg.com/hibp/dist/hibp.min.js][cdn-prod]
+- [https://unpkg.com/hibp/dist/hibp.js][cdn-dev]
+- [https://unpkg.com/hibp/dist/hibp.min.js][cdn-prod]
 
 Alternatively, you may bundle it in with client-side code using a module bundler
 like [webpack][webpack]. If your build process honors the `module` field in
@@ -142,9 +142,9 @@ providing a polyfill. I recommend [es6-promise][es6-promise].
 
 ## Projects Using hibp
 
-* [pwned][pwned] - a command-line tool for querying the '[Have I been
+- [pwned][pwned] - a command-line tool for querying the '[Have I been
   pwned?][haveibeenpwned]' service
-* [hibp-stdlib][hibp-stdlib] - a microservice on [StdLib][stdlib]
+- [hibp-stdlib][hibp-stdlib] - a microservice on [StdLib][stdlib]
 
 Send me a [PR][pulls] or an email and I'll add yours to the list.
 
