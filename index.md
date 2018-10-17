@@ -29,7 +29,7 @@ npm install --save hibp
 Browser via CDN (see [below](#using-in-the-browser) for more information):
 
 ```html
-<script src="https://unpkg.com/hibp@7.1.3"></script>
+<script src="https://unpkg.com/hibp@7.2.0"></script>
 ```
 
 ## Features
@@ -104,37 +104,74 @@ search('someAccountOrEmail')
 
 #### Using in the browser
 
-There is a Universal Module Definition (UMD) build provided in the package
-`dist` directory for usage in the browser. When using this build, an `hibp`
-object will be added to the browser's `window` object.
+**Prerequisite:** This module requires a Promise implementation to exist in the
+global namespace prior to being loaded. Therefore, to facilitate usage in
+[browsers without native Promise support][caniuse-promise], you are responsible
+for providing a polyfill. I recommend [es6-promise][es6-promise].
 
-The recommended way to include the UMD build (when using a `<script>` tag) is to
-use the [unpkg][unpkg] CDN, specifying the exact version you want. If you don't
-specify a version, the `latest` tag will be used, which could be dangerous
-if/when there are breaking changes made to the API. See [unpkg][unpkg] for
-details and advanced version specification, but generally you will want to do
-the following (replacing `x.y.z` with the version you want):
+You have several options for using this library in a browser environment:
 
-```html
-<script src="https://unpkg.com/hibp@x.y.z"></script>
-```
+1. Bundled
 
-Development and production (minified) UMD builds are also provided for manual
-download if desired:
+   The most performant and recommended method is to bundle it with client-side
+   code using a module bundler like [webpack][webpack]. If your build process
+   honors the `module` field in `package.json`, you can import the ECMAScript
+   module as described [above](#usage). Otherwise, the `main` field resolves to
+   the CommonJS module version.
 
-- [https://unpkg.com/hibp/dist/hibp.js][cdn-dev]
-- [https://unpkg.com/hibp/dist/hibp.min.js][cdn-prod]
+1. UMD
 
-Alternatively, you may bundle it in with client-side code using a module bundler
-like [webpack][webpack]. If your build process honors the `module` field in
-`package.json`, you can import the ECMAScript module as described
-[above](#usage). Otherwise, the `main` field resolves to the CommonJS module
-version.
+   There is also a Universal Module Definition (UMD) build provided in the
+   package `dist` directory for usage in the browser. When using this build, an
+   `hibp` object will be added to the browser's `window` object.
 
-**N.B.** This module requires a Promise implementation to exist in the global
-namespace prior to being loaded. Therefore, to facilitate usage in [browsers
-without native Promise support][caniuse-promise], you are responsible for
-providing a polyfill. I recommend [es6-promise][es6-promise].
+   The recommended way to include the UMD build (when using a `<script>` tag) is
+   to use the [unpkg][unpkg] CDN, specifying the exact version you want. If you
+   don't specify a version, the `latest` tag will be used, which could be
+   dangerous if/when there are breaking changes made to the API. See
+   [unpkg][unpkg] for details and advanced version specification, but generally
+   you will want to do the following (replacing `x.y.z` with the version you
+   want):
+
+   ```html
+   <script src="https://unpkg.com/hibp@x.y.z"></script>
+   ```
+
+   Development and production (minified) UMD builds are also provided for manual
+   download if desired:
+
+   - [https://unpkg.com/hibp/dist/hibp.js][cdn-umd-dev]
+   - [https://unpkg.com/hibp/dist/hibp.min.js][cdn-umd-prod]
+<br><br>
+
+1. ESM for Browsers
+
+   Modern browsers now [support][caniuse-esm] importing ECMAScript modules via
+   `<script type="module">` tags. Like the UMD option above, this build is also
+   available the [unpkg][unpkg] CDN (and the same versioning rules apply), but
+   you must specify the full path including the `.mjs` file extension. For
+   example:
+
+   ```html
+   <script type="module">
+     import { dataClasses } from 'https://unpkg.com/hibp/dist/hibp.min.mjs@x.y.z';
+
+     const logDataClasses = async () => {
+       console.table(await dataClasses());
+     };
+
+     logDataClasses();
+   </script>
+   ```
+
+   Development and production (minified) ESM builds are also provided for manual
+   download if desired:
+
+   - [https://unpkg.com/hibp/dist/hibp.mjs][cdn-mjs-dev]
+   - [https://unpkg.com/hibp/dist/hibp.min.mjs][cdn-mjs-prod]
+
+   For more information on ESM in the browser, check out [Using JavaScript
+   modules on the web][esm-primer].
 
 ## Try It Out
 
@@ -145,6 +182,8 @@ providing a polyfill. I recommend [es6-promise][es6-promise].
 - [pwned][pwned] - a command-line tool for querying the '[Have I been
   pwned?][haveibeenpwned]' service
 - [hibp-stdlib][hibp-stdlib] - a microservice on [StdLib][stdlib]
+- [Password Lense][pwl] - a static web application to reveal character types in
+  a password
 
 Send me a [PR][pulls] or an email and I'll add yours to the list.
 
@@ -152,18 +191,23 @@ Send me a [PR][pulls] or an email and I'll add yours to the list.
 
 This module is distributed under the [MIT License][license].
 
-[troy]: http://www.troyhunt.com
+[troy]: https://www.troyhunt.com
 [haveibeenpwned]: https://haveibeenpwned.com
 [search-by-range]: https://haveibeenpwned.com/API/v2#SearchingPwnedPasswordsByRange
 [unpkg]: https://unpkg.com
-[cdn-dev]: https://unpkg.com/hibp/dist/hibp.js
-[cdn-prod]: https://unpkg.com/hibp/dist/hibp.min.js
-[webpack]: https://webpack.github.io
-[caniuse-promise]: http://caniuse.com/#search=promise
+[cdn-umd-dev]: https://unpkg.com/hibp/dist/hibp.js
+[cdn-umd-prod]: https://unpkg.com/hibp/dist/hibp.min.js
+[caniuse-esm]: https://caniuse.com/#feat=es6-module
+[cdn-mjs-dev]: https://unpkg.com/hibp/dist/hibp.mjs
+[cdn-mjs-prod]: https://unpkg.com/hibp/dist/hibp.min.mjs
+[esm-primer]: https://developers.google.com/web/fundamentals/primers/modules
+[webpack]: https://webpack.js.org
+[caniuse-promise]: https://caniuse.com/#search=promise
 [es6-promise]: https://github.com/stefanpenner/es6-promise
 [runkit]: https://runkit.com/npm/hibp
 [pwned]: https://github.com/wKovacs64/pwned
 [pulls]: https://github.com/wKovacs64/hibp/pulls
 [hibp-stdlib]: https://stdlib.com/@wKovacs64/lib/hibp
 [stdlib]: https://stdlib.com
+[pwl]: https://pwl.netlify.com/
 [license]: https://github.com/wKovacs64/hibp/tree/master/LICENSE.txt
