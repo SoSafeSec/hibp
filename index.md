@@ -29,7 +29,7 @@ npm install --save hibp
 Browser via CDN (see [below](#using-in-the-browser) for more information):
 
 ```html
-<script src="https://unpkg.com/hibp@7.2.0"></script>
+<script src="https://unpkg.com/hibp@7.2.1"></script>
 ```
 
 ## Features
@@ -142,7 +142,7 @@ You have several options for using this library in a browser environment:
 
    - [https://unpkg.com/hibp/dist/hibp.js][cdn-umd-dev]
    - [https://unpkg.com/hibp/dist/hibp.min.js][cdn-umd-prod]
-<br><br>
+     <br><br>
 
 1. ESM for Browsers
 
