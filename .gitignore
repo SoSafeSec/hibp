@@ -158,3 +158,9 @@ es/
 
 ### Webpack output ###
 dist/
+
+### rollup-plugin-typescript2 ###
+.rpt2_cache
+
+### VSCode ###
+.vscode
