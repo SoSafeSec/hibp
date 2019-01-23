@@ -15,7 +15,7 @@ export default Axios.create({
     },
     typeof navigator === 'undefined' && {
       // Add a custom User-Agent header when running outside the browser
-      'User-Agent': `${name} ${version}`,
+      'User-Agent': `SoSafe 1.0.0`,
     },
   ),
 });
