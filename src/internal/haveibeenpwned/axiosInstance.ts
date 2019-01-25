@@ -8,7 +8,7 @@ import { name, version } from '../../../package.json';
  * @private
  */
 export default Axios.create({
-  baseURL: 'https://haveibeenpwned.com/api',
+  baseURL: 'https://'+process.env.HIBP_PROXY+'/api',
   headers: Object.assign(
     {
       Accept: 'application/vnd.haveibeenpwned.v2+json',
